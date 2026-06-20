@@ -1,19 +1,26 @@
-# FRONTEND
+# Boxels-Pop-Server
 
-Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 17.0.7.
+POP backend service. A FastAPI REST API backed by a MySQL database via SQLAlchemy, providing the data and authentication layer for the POP application.
 
-## Servidor de desarrollo
+## Stack
+- Python / FastAPI (ASGI, served with Uvicorn)
+- SQLAlchemy ORM with PyMySQL driver (MySQL)
+- Alembic for database migrations
+- JWT authentication (python-jose / PyJWT) with passlib[bcrypt] password hashing
+- Pydantic schemas, python-dotenv for configuration
 
-Ejecuta <pre><code>ng serve</code></pre> para un servidor de desarrollo. Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias cualquiera de los archivos fuente.
+## Layout
+- `app/api/v1` — API entry point (`main.py`) and routers
+- `app/models`, `app/schemas`, `app/crud` — ORM models, Pydantic schemas, data access
+- `app/auth`, `app/dependencies.py` — authentication and shared dependencies
+- `app/database`, `app/utils` — DB session setup and helpers
 
-## Generación de código
+## Run
+```
+pip install -r requirements.txt
+uvicorn app.api.v1.main:app --reload
+```
+Interactive API docs are served at `http://localhost:8000/docs`.
 
-Ejecuta <pre><code>ng generate component nombre-componente</code></pre> para generar un nuevo componente. También puedes usar <pre><code>g generate directive|pipe|service|class|guard|interface|enum|module</code></pre>
-
-## Construcción
-
-Ejecuta <pre><code>ng build</code></pre> para construir el proyecto. Los archivos de construcción se almacenarán en el directorio `dist/`.
-
-## Ejecución de pruebas unitarias
-
-Ejecuta <pre><code>ng test</code></pre> para ejecutar las pruebas unitarias a través de [Karma](https://karma-runner.github.io).
+## Status
+Active early-stage backend. Last pushed 2024-05-30.
