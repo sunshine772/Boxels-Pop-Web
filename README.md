@@ -1,26 +1,27 @@
-# Boxels-Pop-Server
+# Boxels-Pop-Web
 
-POP backend service. A FastAPI REST API backed by a MySQL database via SQLAlchemy, providing the data and authentication layer for the POP application.
+Angular 17 single-page frontend application built with the PrimeNG UI suite. Serves as the web client for the Pop project.
 
 ## Stack
-- Python / FastAPI (ASGI, served with Uvicorn)
-- SQLAlchemy ORM with PyMySQL driver (MySQL)
-- Alembic for database migrations
-- JWT authentication (python-jose / PyJWT) with passlib[bcrypt] password hashing
-- Pydantic schemas, python-dotenv for configuration
 
-## Layout
-- `app/api/v1` — API entry point (`main.py`) and routers
-- `app/models`, `app/schemas`, `app/crud` — ORM models, Pydantic schemas, data access
-- `app/auth`, `app/dependencies.py` — authentication and shared dependencies
-- `app/database`, `app/utils` — DB session setup and helpers
+- Angular 17 (standalone Angular CLI workspace)
+- TypeScript 5.2
+- PrimeNG 17 + PrimeFlex + PrimeIcons
+- FullCalendar, Chart.js, Quill (rich text), Prism.js, particles.js, anime.js
+- JWT auth via @auth0/angular-jwt
+- Karma + Jasmine for unit tests
 
 ## Run
+
+```bash
+npm install
+npm start
 ```
-pip install -r requirements.txt
-uvicorn app.api.v1.main:app --reload
-```
-Interactive API docs are served at `http://localhost:8000/docs`.
+
+Dev server runs at http://localhost:4200/.
+
+Build: `npm run build` (output in `dist/`). Test: `npm test`. Lint: `npm run lint`.
 
 ## Status
-Active early-stage backend. Last pushed 2024-05-30.
+
+Active frontend SPA. Last pushed 2024-05-30.
